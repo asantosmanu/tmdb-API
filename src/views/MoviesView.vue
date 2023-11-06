@@ -12,7 +12,7 @@ onMounted(async () => {
 const movies = ref([]);
 
 const listMovies = async (genreId) => {
-    const response = await api.get('discover/   ', {
+    const response = await api.get('discover/movie', {
         params: {
             with_genres: genreId,
             language: 'pt-BR'
@@ -30,7 +30,6 @@ const listMovies = async (genreId) => {
     </li>
     </ul>
     <div class="movie-list">
-        {{ movies }}
   <div v-for="movie in movies" :key="movie.id" class="movie-card">
     
     <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" :alt="movie.title" />
