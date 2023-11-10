@@ -1,15 +1,9 @@
 <script setup>
-
+import Header from '@/components/Header.vue';
 </script>
 
 <template>
-  <header>
-    <nav>
-      <router-link to="/">Home</router-link>
-      <router-link to="/filmes">Filmes</router-link>
-      <router-link to="/tv">Programas de TV</router-link>
-    </nav>
-  </header>
+  <Header/>
   <main>
     <router-view />
   </main>
