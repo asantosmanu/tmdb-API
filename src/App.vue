@@ -3,10 +3,12 @@ import Header from '@/components/Header.vue';
 </script>
 
 <template>
+<!-- <div class="containergeral"> -->
   <Header/>
   <main>
     <router-view />
   </main>
+<!-- </div> -->
 </template>
 
 <style scoped>
@@ -30,4 +32,9 @@ nav a {
   text-decoration: none;
   color: #fff;
 }
+.containergeral{
+  background: #110920;  
+
+}
+
 </style>

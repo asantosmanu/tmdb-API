@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import api from '@/plugins/axios'
 
 const genres = ref([])
+const paginaAtual = ref('')
 
 onMounted(async () => {
   const response = await api.get('genre/movie/list?language=pt-BR')
@@ -11,24 +12,60 @@ onMounted(async () => {
 
 const movies = ref([]);
 
-const listMovies = async (genreId) => {
+const proxima = async () => {
+    const pagina = paginaAtual.value + 1
     const response = await api.get('discover/movie', {
         params: {
-            with_genres: genreId,
+            with_genres: 16,
+            page: pagina,
             language: 'pt-BR'
         }
     });
+    paginaAtual.value = response.data.page
+    // console.log(response.data)
+    movies.value = response.data.results
+};
+
+
+const anterior = async () => {
+    const pagina = paginaAtual.value - 1
+    const response = await api.get('discover/movie', {
+        params: {
+            with_genres: 16,
+            page: pagina,
+            language: 'pt-BR'
+        }
+    });
+    paginaAtual.value = response.data.page
+    // console.log(response.data)
+    movies.value = response.data.results
+};
+
+
+const listMovies = async (genreId) => {
+    const response = await api.get('discover/movie', {
+        params: {
+            with_genres: 16,
+            page: genreId,
+            language: 'pt-BR'
+        }
+    });
+    paginaAtual.value = response.data.page
+    // console.log(response.data)
     movies.value = response.data.results
 };
 </script>
 
 <template>
-    <h1>Filmes</h1>
+    <h1>CartoonFlix</h1>
     <ul class="genre-list">
     <li v-for="genre in genres" :key="genre.id" @click="listMovies(genre.id)" class="genre-item">
-    {{ genre.name }}
+    {{genre.id}} - {{ genre.name }}
     </li>
     </ul>
+    <p class="page">Minha pagina: {{ paginaAtual }}</p> 
+    <button @click="anterior">Anterior</button>
+    <button @click="proxima">Proxima</button>
     <div class="movie-list">
   <div v-for="movie in movies" :key="movie.id" class="movie-card">
     
@@ -44,6 +81,18 @@ const listMovies = async (genreId) => {
 </template>
 
 <style scoped>
+h1{
+  color: green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-weight: 600;
+  font-size: 520%;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  /* box-shadow: 0 0 0.5rem #f0f0f0; */
+}
 .movie-list {
   display: flex;
   flex-wrap: wrap;
@@ -55,7 +104,9 @@ const listMovies = async (genreId) => {
   height: 30rem;
   border-radius: 0.5rem;
   overflow: hidden;
-  box-shadow: 0 0 0.5rem #000;
+  box-shadow: 0 0 0.5rem #ffffff;
+  background-color: rgb(36, 83, 114);
+  color: white;
 }
 
 .movie-card img {
@@ -85,15 +136,20 @@ const listMovies = async (genreId) => {
 }   
 
 .genre-item {
-  background-color: #387250;
+  background-color: greenyellow;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
-  color: #fff;
+  color: #000000;
 }
 
 .genre-item:hover {
   cursor: pointer;
   background-color: #4e9e5f;
   box-shadow: 0 0 0.5rem #387250;
+}
+
+.page {
+  color: white;
+  font-size: large;
 }
 </style>

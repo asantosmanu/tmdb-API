@@ -14,7 +14,8 @@ const tv = ref([]);
 const listTv = async (genreId) => {
 const response = await api.get('discover/tv', {
     params: {
-        with_genres: genreId,
+        with_genres: 16,
+        page: genreId,
         language: 'pt-BR'
     }
 });
@@ -23,7 +24,7 @@ const response = await api.get('discover/tv', {
 </script>
 
 <template>
-    <h1>Programas de TV</h1>
+    <h1>CartoonFlix</h1>
     <ul class="genre-list">
       <li v-for="genre in genres" :key="genre.id" class="genre-item" @click="listTv(genre.id)">
           {{ genre.name }}
@@ -44,6 +45,16 @@ const response = await api.get('discover/tv', {
   </template>
   
   <style scoped>
+  h1{
+  color: rgb(0, 153, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-weight: 400;
+  font-size: 320%;
+}
 .tv-title{
   font-size: 1.1rem;
   font-weight: bold;
@@ -61,13 +72,13 @@ const response = await api.get('discover/tv', {
   height: 30rem;
   border-radius: 0.5rem;
   overflow: hidden;
-  box-shadow: 0 0 0.5rem #000;
+  box-shadow: 0 0 0.5rem #ffffff;
 }
 .tv-card img {
   width: 100%;
   height: 20rem;
   border-radius: 0.5rem;
-  box-shadow: 0 0 0.5rem #000;
+  box-shadow: 0 0 0.5rem #ffffff;
 }
 .tv-details {
   padding: 0 0.5rem;
@@ -88,7 +99,7 @@ const response = await api.get('discover/tv', {
   }
   
   .genre-item {
-    background-color: #5d6424;
+    background-color: #246464;
     border-radius: 1rem;
     padding: 0.5rem 1rem;
     align-self: center;

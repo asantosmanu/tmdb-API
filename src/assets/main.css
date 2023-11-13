@@ -28,3 +28,7 @@ body{
   font-family: Arial, Helvetica, sans-serif;
   background-image: linear-gradient(to top, rgb(20, 24, 54), rgb(6, 2, 10));
 }
+#app {
+  background-color: #110920;
+  min-height: 100vh;
+}
