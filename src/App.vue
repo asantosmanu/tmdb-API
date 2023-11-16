@@ -33,7 +33,7 @@ nav a {
   color: #fff;
 }
 .containergeral{
-  background: #110920;  
+  background: #000000;  
 
 }
 
