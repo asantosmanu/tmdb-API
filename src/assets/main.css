@@ -29,6 +29,6 @@ body{
   background-image: linear-gradient(to top, rgb(20, 24, 54), rgb(6, 2, 10));
 }
 #app {
-  background-color: #110920;
+  background-color: #000000;
   min-height: 100vh;
 }

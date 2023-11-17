@@ -3,19 +3,21 @@ import Header from '@/components/Header.vue';
 </script>
 
 <template>
-<!-- <div class="containergeral"> -->
-  <Header/>
+<div class="containergeral">
+
+  <Header />
   <main>
     <router-view />
   </main>
-<!-- </div> -->
+</div>
+  
 </template>
 
 <style scoped>
 header {
   height: 3rem;
   display: flex;
-  background-color: black;
+  background-color: rgb(255, 81, 0);
   color: #fff;
   font-size: 1.2rem;
   padding-left: 2rem;
@@ -33,7 +35,7 @@ nav a {
   color: #fff;
 }
 .containergeral{
-  background: #000000;  
+  background: black;
 
 }
 
