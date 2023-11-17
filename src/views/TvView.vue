@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import api from '@/plugins/axios'
 
 const genres = ref([])
+const paginaAtual = ref('')
 
 onMounted(async () => {
   const response = await api.get('genre/tv/list?language=pt-BR')
@@ -10,6 +11,34 @@ onMounted(async () => {
 })
 
 const tv = ref([]);
+
+const proxima = async () => {
+    const pagina = paginaAtual.value + 1
+    const response = await api.get('discover/tv', {
+        params: {
+            with_genres: 16,
+            page: pagina,
+            language: 'pt-BR'
+        }
+    });
+    paginaAtual.value = response.data.page
+    // console.log(response.data)
+    tv.value = response.data.results
+};
+
+const anterior = async () => {
+    const pagina = paginaAtual.value - 1
+    const response = await api.get('discover/movie', {
+        params: {
+            with_genres: 16,
+            page: pagina,
+            language: 'pt-BR'
+        }
+    });
+    paginaAtual.value = response.data.page
+    // console.log(response.data)
+    tv.value = response.data.results
+};
 
 const listTv = async (genreId) => {
 const response = await api.get('discover/tv', {
@@ -30,6 +59,9 @@ const response = await api.get('discover/tv', {
           {{ genre.name }}
       </li>
     </ul>
+    <p class="page">Página atual: {{ paginaAtual }}</p> 
+    <button class="contadorPagina" @click="anterior">Anterior</button>
+    <button class="contadorPagina" @click="proxima">Proxima</button>
     <div class="tv-list">
   <div v-for="tv in tv" :key="tv.id" class="tv-card">
     
@@ -38,13 +70,23 @@ const response = await api.get('discover/tv', {
       <p class="tv-title">{{ tv.name}}</p>
       <p class="tv-release-date">{{ tv.release_date }}</p>
       <p class="tv-genres"></p>
+      <!-- <p class="tv-genres">{{ tv.genre_ids }}</p> -->
     </div>
-    
   </div>
 </div>
   </template>
   
   <style scoped>
+  .tv-card {
+  width: 15rem;
+  height: 30rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 0 0.5rem #ffffff;
+  background-color: rgb(36, 83, 114);
+  color: white;
+}
+
   h1{
   color: rgba(243, 80, 16, 0.768);
   display: flex;
@@ -118,4 +160,19 @@ const response = await api.get('discover/tv', {
     background-color: rgba(243, 80, 16, 0.768);
     box-shadow: 0 0 0.5rem rgba(230, 118, 74, 0.768);
   }
+  .page {
+  color: white;
+  font-size: large;
+  }
+  .contadorPagina{
+  background-color: greenyellow;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  color: #000000;
+}
+.contadorPagina:hover{
+  cursor: pointer;
+  background-color: #4e9e5f;
+  box-shadow: 0 0 0.5rem #387250;
+}
   </style>

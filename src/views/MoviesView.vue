@@ -63,9 +63,9 @@ const listMovies = async (genreId) => {
      {{ genre.name }}
     </li>
     </ul>
-    <p class="page">Minha pagina: {{ paginaAtual }}</p> 
-    <button @click="anterior">Anterior</button>
-    <button @click="proxima">Proxima</button>
+    <p class="page">Pagina atual: {{ paginaAtual }}</p> 
+    <button class="contadorPagina" @click="anterior">Anterior</button>
+    <button class="contadorPagina" @click="proxima">Proxima</button>
     <div class="movie-list">
   <div v-for="movie in movies" :key="movie.id" class="movie-card">
     
@@ -74,6 +74,7 @@ const listMovies = async (genreId) => {
       <p class="movie-title">{{ movie.title }}</p>
       <p class="movie-release-date">{{ movie.release_date }}</p>
       <p class="movie-genres"></p>
+      <!-- <p class="movie-genres">{{ movie.genre_ids }}</p> -->
     </div>
     
   </div>
@@ -151,5 +152,16 @@ h1{
 .page {
   color: white;
   font-size: large;
+}
+.contadorPagina{
+  background-color: greenyellow;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  color: #000000;
+}
+.contadorPagina:hover{
+  cursor: pointer;
+  background-color: #4e9e5f;
+  box-shadow: 0 0 0.5rem #387250;
 }
 </style>
