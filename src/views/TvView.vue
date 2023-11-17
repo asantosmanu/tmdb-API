@@ -37,7 +37,7 @@ const response = await api.get('discover/tv', {
     <div class="tv-details">
       <p class="tv-title">{{ tv.name}}</p>
       <p class="tv-release-date">{{ tv.release_date }}</p>
-      <p class="tv-genres">{{ tv.genre_ids }}</p>
+      <p class="tv-genres"></p>
     </div>
     
   </div>
@@ -46,16 +46,18 @@ const response = await api.get('discover/tv', {
   
   <style scoped>
   h1{
-  color: rgb(0, 153, 255);
+  color: rgba(243, 80, 16, 0.768);
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 2%;
   margin-bottom: 2%;
-  font-weight: 400;
-  font-size: 320%;
+  font-weight: 600;
+  font-size: 520%;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .tv-title{
+  color: white;
   font-size: 1.1rem;
   font-weight: bold;
   line-height: 1.3rem;
@@ -66,8 +68,10 @@ const response = await api.get('discover/tv', {
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 2%;
+  
 }
 .tv-card {
+  background-color: rgba(241, 116, 67, 0.768) ;
   width: 15rem;
   height: 30rem;
   border-radius: 0.5rem;
@@ -90,6 +94,7 @@ const response = await api.get('discover/tv', {
   height: 3.2rem;
 }
   .genre-list {
+    color: white;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -99,18 +104,18 @@ const response = await api.get('discover/tv', {
   }
   
   .genre-item {
-    background-color: #246464;
-    border-radius: 1rem;
+    background-color: rgba(241, 116, 67, 0.768);
+    border-radius: 5px;
     padding: 0.5rem 1rem;
     align-self: center;
-    color: #fff;
+    color: white;
     display: flex;
     justify-content: center;
   }
   
   .genre-item:hover {
     cursor: pointer;
-    background-color: #7d8a2e;
-    box-shadow: 0 0 0.5rem #5d6424;
+    background-color: rgba(243, 80, 16, 0.768);
+    box-shadow: 0 0 0.5rem rgba(230, 118, 74, 0.768);
   }
   </style>

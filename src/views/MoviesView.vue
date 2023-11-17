@@ -60,7 +60,7 @@ const listMovies = async (genreId) => {
     <h1>CartoonFlix</h1>
     <ul class="genre-list">
     <li v-for="genre in genres" :key="genre.id" @click="listMovies(genre.id)" class="genre-item">
-    {{genre.id}} - {{ genre.name }}
+     {{ genre.name }}
     </li>
     </ul>
     <p class="page">Minha pagina: {{ paginaAtual }}</p> 
@@ -73,7 +73,7 @@ const listMovies = async (genreId) => {
     <div class="movie-details">
       <p class="movie-title">{{ movie.title }}</p>
       <p class="movie-release-date">{{ movie.release_date }}</p>
-      <p class="movie-genres">{{ movie.genre_ids }}</p>
+      <p class="movie-genres"></p>
     </div>
     
   </div>
@@ -82,7 +82,7 @@ const listMovies = async (genreId) => {
 
 <style scoped>
 h1{
-  color: green;
+  color: rgba(243, 80, 16, 0.768);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,7 +105,7 @@ h1{
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 0 0.5rem #ffffff;
-  background-color: rgb(36, 83, 114);
+  background-color: rgba(241, 116, 67, 0.768);
   color: white;
 }
 
@@ -136,16 +136,16 @@ h1{
 }   
 
 .genre-item {
-  background-color: greenyellow;
-  border-radius: 1rem;
+  background-color: rgba(241, 116, 67, 0.768);
+  border-radius: 5px;
   padding: 0.5rem 1rem;
-  color: #000000;
+  color: white;
 }
 
 .genre-item:hover {
   cursor: pointer;
-  background-color: #4e9e5f;
-  box-shadow: 0 0 0.5rem #387250;
+  background-color: rgba(243, 80, 16, 0.768) ;
+  box-shadow: 0 0 0.5rem rgba(230, 118, 74, 0.768) ;
 }
 
 .page {
