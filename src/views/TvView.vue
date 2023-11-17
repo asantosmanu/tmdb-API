@@ -75,7 +75,7 @@ const response = await api.get('discover/tv', {
   </div>
 </div>
   </template>
-  oi
+  
   <style scoped>
   .tv-card {
   width: 15rem;
