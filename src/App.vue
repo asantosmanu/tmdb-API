@@ -21,6 +21,9 @@ header {
   color: #fff;
   font-size: 1.2rem;
   padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 nav {
