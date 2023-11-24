@@ -4,10 +4,9 @@ import '@/vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Navigation } from '@/vue3-carousel'
 import {imgs} from '@/_data/img.js'
 
-
 </script>
   
-  <template>
+<template>
 
   <div class="container">
   </div>

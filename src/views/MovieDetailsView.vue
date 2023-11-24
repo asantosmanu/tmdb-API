@@ -3,21 +3,23 @@
   import { useMovieStore } from '@/stores/movie';
   const movieStore = useMovieStore();
 
-  const props = defineProps({
-    movieId: {
-      type: Number,
-      required: true,
-    },
-  });
+  const props = defineProps(['id']);
 
   onMounted(async () => {
-    await movieStore.getMovieDetail(props.movieId);
+    await movieStore.getMovieDetail(props.id);
   });
 </script>
 
 <template>
-  
-  <div class="main">
+  <div class="info">
+  <p>oi - {{ props.id }}</p>
+  {{ movieStore.currentMovie }}
+  </div>
+  <div class="voltar">
+    <button @click="$router.push({ name: 'Movies' })">Voltar</button>
+  </div>
+
+  <!-- <div class="main">
     <div class="content">
       <img
         :src="`https://image.tmdb.org/t/p/w185${movieStore.currentMovie.poster_path}`"
@@ -48,10 +50,13 @@
       <p v-else>{{ company.name }}</p>
     </template>
   </div>
-  
+   -->
 </template>
 
 <style scoped>
+  .info{
+    color: white;
+  }
   .companies {
     display: flex;
     flex-direction: row;
