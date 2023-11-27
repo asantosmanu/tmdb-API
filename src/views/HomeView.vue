@@ -1,72 +1,72 @@
   <script setup>
+import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
+import { imgs } from '@/_data/img.js'
+import 'vue3-carousel/dist/carousel.css'
 
-import '@/vue3-carousel/dist/carousel.css'
-import { Carousel, Slide, Navigation } from '@/vue3-carousel'
-import {imgs} from '@/_data/img.js'
 
 </script>
-  
-<template>
 
-  <div class="container">
+<template>
+  <div class="logo">
+    <img src="https://recreio.uol.com.br/media/_versions/animacoes/madagascar_capa_widemd.jpg" alt="">
   </div>
 
   <div>
     <h1>
-      Lançamentos
+      LANÇAMENTOS
     </h1>
   </div>
 
-  <carousel :items-to-show="4.2" class="Margin">
-    <slide v-for="img in imgs" :key="img.id">
-      <div class="img-card">
-        <div class="img-container">
-          <img :src="img.src" alt="" width="300"  class="img" />
-        </div>
-      </div>
-    </slide>
-    <template #addons>  
-      <navigation />
+  <Carousel>
+    <Slide v-for="slide in 10" :key="slide">
+      <div class="carousel__item">
+        <img :src="imgs[slide]?.src" alt="">
+        </div>        
+    </Slide>
+
+    <template #addons>
+      <Navigation />
+      <Pagination />
     </template>
-  </carousel>
-
-
- 
-
+  </Carousel>
+  
 </template>
 
 <style scoped>
-.Margin {
-  margin-bottom: 80px;
-}
 
-.img{
-    border-radius: 10px;
-    /* /* width: 100%; */
-    /* height: 100%;  */
-}
-.img-card {
-  text-align: center;
-  min-height: 0;
-  height: auto;
-}
 
-.img-card h6 {
-  margin-top: 10px;
-}
-.container {
-  background-image: url('https://jornalggn.com.br/wp-content/uploads/2022/04/robert-pattinsons-the-batman-tickets-sells-out-moments-after-going-on-sale-001.jpeg');
-  height: 600%;
+.carousel__item {
+  min-height: 200%;
   width: 100%;
+  background-color: var(--vc-clr-primary);
   color: var(--vc-clr-white);
-  padding-top: 375px;
-  padding-left: 100%;
- 
-
+  font-size: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+  
 }
 
-h1 {
-  color: rgba(243, 80, 16, 0.768);
+.container{
+  background-image: url('https://recreio.uol.com.br/media/_versions/animacoes/madagascar_capa_widemd.jpg');
+  background-repeat: no-repeat;
+  background-size: 50%;
+  /* height: 600%; */
+  /* width: 100%; */
+  color: var(--vc-clr-white);
+  padding-top: 375%;
+  padding-left: 100%;
+}
+
+h1{
+  color: rgb(255, 81, 0);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,6 +76,5 @@ h1 {
   font-size: 520%;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-
 
 </style>

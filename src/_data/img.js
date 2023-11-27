@@ -3,11 +3,11 @@ import { ref} from 'vue'
 const imgs = ref(
     [
       {
-        src: 'https://www.gnccinemas.com.br/_files/view2.php/crop/230x338/pasta/1/654a4e5e85ef4.jpg',
+        src: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQgjn5RF4tUM5CHMRP-vbNTqWxs9pFqjPLuKa4VDP81MHN-MZG9',
         alt: 'Not Filme'
       },
       {
-        src: 'https://www.gnccinemas.com.br/_files/view2.php/crop/230x338/pasta/1/653030da9a0e3.jpg',
+        src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlX2WTseWsRvK9jYIHHYIjTCAFJvyUNgEJ5I1p4RtyZ4e01AABlyyytZopRbRBCfEYSMg&usqp=CAU',
         alt: 'Not Filme'
       },
       {
