@@ -11,10 +11,17 @@
 </script>
 
 <template>
-  <div class="info">
+  <!-- <div class="info"> -->
   <p>oi - {{ props.id }}</p>
-  {{ movieStore.currentMovie }}
+  <div class="title">
+    {{ movieStore.currentMovie.original_title }}
   </div>
+  <img :src="`https://image.tmdb.org/t/p/w500${movieStore.currentMovie.poster_path}`" alt="Logo" />
+  <div class="overview">
+  {{ movieStore.currentMovie.overview }}
+  </div>
+  {{ movieStore.currentMovie }}
+  <!-- </div> -->
   <div class="voltar">
     <button @click="$router.push({ name: 'Movies' })">Voltar</button>
   </div>
@@ -54,8 +61,19 @@
 </template>
 
 <style scoped>
+.title{
+  color: rgb(255, 255, 255);
+  font-size: 300%;
+  font-weight: bold;
+  font-size: 300%;
+  margin-bottom: 2%;
+}
+.overview{
+
+}
   .info{
     color: white;
+    background-image: url();
   }
   .companies {
     display: flex;
