@@ -7,23 +7,23 @@ const imgs = ref(
         alt: 'Not Filme'
       },
       {
-        src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlX2WTseWsRvK9jYIHHYIjTCAFJvyUNgEJ5I1p4RtyZ4e01AABlyyytZopRbRBCfEYSMg&usqp=CAU',
+        src: 'https://hqrock.files.wordpress.com/2013/05/justice-league-banner-by-jim-lee-new-52.jpg',
         alt: 'Not Filme'
       },
       {
-        src: 'https://www.gnccinemas.com.br/_files/view2.php/crop/230x338/pasta/1/6512d487467f2.jpg',
+        src: 'https://hqrock.files.wordpress.com/2013/05/justice-league-banner-by-jim-lee-new-52.jpg',
         alt: 'Not Filme'
       },
       {
-        src: 'https://www.gnccinemas.com.br/_files/view2.php/crop/230x338/pasta/1/6504924a51397.jpg',
+        src: 'https://hqrock.files.wordpress.com/2013/05/justice-league-banner-by-jim-lee-new-52.jpg',
         alt: 'Not Filme'
       },
       {
-        src: 'https://www.gnccinemas.com.br/_files/view2.php/crop/230x338/pasta/1/651c2f47ea4c9.jpg',
+        src: 'https://hqrock.files.wordpress.com/2013/05/justice-league-banner-by-jim-lee-new-52.jpg',
         alt: 'Not Filme'
       },
       {
-        src: 'https://capas-p.imagemfilmes.com.br/164067_000_p.jpg',
+        src: 'https://hqrock.files.wordpress.com/2013/05/justice-league-banner-by-jim-lee-new-52.jpg',
         alt: 'Not Filme'
       },
       {

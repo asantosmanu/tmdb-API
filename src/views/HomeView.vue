@@ -8,7 +8,7 @@ import 'vue3-carousel/dist/carousel.css'
 
 <template>
   <div class="logo">
-    <img src="https://recreio.uol.com.br/media/_versions/animacoes/madagascar_capa_widemd.jpg" alt="">
+    <img src="https://img.freepik.com/vetores-gratis/filmes-de-terror-noturnos-banner-de-desenho-animado-monstros-engracados_107791-14224.jpg?w=1480&t=st=1701695620~exp=1701696220~hmac=45f07db97c3d100b1939d7457257041ab8af4bba77e2f3c1f7c1cfc6705fbfc6" alt="">
   </div>
 
   <div>
