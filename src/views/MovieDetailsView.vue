@@ -12,15 +12,18 @@
 
 <template>
   <!-- <div class="info"> -->
-  <p>oi - {{ props.id }}</p>
   <div class="title">
     {{ movieStore.currentMovie.original_title }}
   </div>
+  <div class="poster">
   <img :src="`https://image.tmdb.org/t/p/w500${movieStore.currentMovie.poster_path}`" alt="Logo" />
+  </div>
   <div class="overview">
   {{ movieStore.currentMovie.overview }}
   </div>
+  <div class="teste">
   {{ movieStore.currentMovie }}
+  </div>
   <!-- </div> -->
   <div class="voltar">
     <button @click="$router.push({ name: 'Movies' })">Voltar</button>
@@ -61,15 +64,30 @@
 </template>
 
 <style scoped>
+.teste{
+  color: aliceblue  ;
+}
+.poster{
+  margin-left: 1%;
+}
+.overview{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin: 40%;
+  margin-top: -40%;
+  font-size: larger;
+  /* font-weight: bold; */
+  margin-left: 30%;
+  color: aliceblue;
+}
 .title{
   color: rgb(255, 255, 255);
   font-size: 300%;
   font-weight: bold;
   font-size: 300%;
   margin-bottom: 2%;
-}
-.overview{
-
+  margin-left: 1%;
 }
   .info{
     color: white;
