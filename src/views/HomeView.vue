@@ -3,17 +3,15 @@ import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import { imgs } from '@/_data/img.js'
 import 'vue3-carousel/dist/carousel.css'
 
-
 </script>
 
 <template>
-  <div class="logo">
-    <img src="https://disneyplusbrasil.com.br/wp-content/uploads/2021/02/Luca-Banner.jpg" alt="">
+  <div class="logo" @click="$router.push({ name: 'MovieDetails' })" >
+    <img  src="https://disneyplusbrasil.com.br/wp-content/uploads/2021/02/Luca-Banner.jpg" alt="">
   </div>
-
   <div>
     <h1>
-      LANÇAMENTOS
+      LANÇAMENTOS !
     </h1>
   </div>
 
@@ -33,7 +31,6 @@ import 'vue3-carousel/dist/carousel.css'
 </template>
 
 <style scoped>
-
 
 .carousel__item {
   min-height: 200%;
