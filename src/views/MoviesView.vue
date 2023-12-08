@@ -1,66 +1,85 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import api from '@/plugins/axios'
-
 import { useRouter } from 'vue-router'
+import Loading from 'vue-loading-overlay'
+
 const router = useRouter()
+
+const isLoading = ref(false);
 
 function openMovie(id) {
   router.push({ name: 'MovieDetails', params: { id } });
 }
+
 const genres = ref([])
-const paginaAtual = ref('')
+const paginaAtual = ref(1); // Inicialize com o valor 1 ou outro valor desejado
 
 onMounted(async () => {
-  const response = await api.get('genre/movie/list?language=pt-BR')
-  genres.value = response.data.genres
+  try {
+    const response = await api.get('genre/movie/list?language=pt-BR')
+    genres.value = response.data.genres
+  } catch (error) {
+    console.error('Erro ao obter lista de gêneros:', error);
+  }
 })
 
 const movies = ref([]);
 
 const proxima = async () => {
-  const pagina = paginaAtual.value + 1
-  const response = await api.get('discover/movie', {
-    params: {
-      with_genres: 16,
-      page: pagina,
-      language: 'pt-BR'
-    }
-  });
-  paginaAtual.value = response.data.page
-  // console.log(response.data)
-  movies.value = response.data.results
+  try {
+    const pagina = paginaAtual.value + 1
+    const response = await api.get('discover/movie', {
+      params: {
+        with_genres: 16,
+        page: pagina,
+        language: 'pt-BR'
+      }
+    });
+    paginaAtual.value = response.data.page
+    movies.value = response.data.results
+  } catch (error) {
+    console.error('Erro ao obter filmes na próxima página:', error);
+  }
 };
-
 
 const anterior = async () => {
-  const pagina = paginaAtual.value - 1
-  const response = await api.get('discover/movie', {
-    params: {
-      with_genres: 16,
-      page: pagina,
-      language: 'pt-BR'
-    }
-  });
-  paginaAtual.value = response.data.page
-  // console.log(response.data)
-  movies.value = response.data.results
+  try {
+    const pagina = paginaAtual.value - 1
+    const response = await api.get('discover/movie', {
+      params: {
+        with_genres: 16,
+        page: pagina,
+        language: 'pt-BR'
+      }
+    });
+    paginaAtual.value = response.data.page
+    movies.value = response.data.results
+  } catch (error) {
+    console.error('Erro ao obter filmes na página anterior:', error);
+  }
 };
-
 
 const listMovies = async (genreId) => {
-  const response = await api.get('discover/movie', {
-    params: {
-      with_genres: 16,
-      page: genreId,
-      language: 'pt-BR'
-    }
-  });
-  paginaAtual.value = response.data.page
-  // console.log(response.data)
-  movies.value = response.data.results
+  isLoading.value = true;
+  try {
+    const response = await api.get('discover/movie', {
+      params: {
+        with_genres: genreId,
+        page: paginaAtual.value,
+        language: 'pt-BR'
+      }
+    });
+    paginaAtual.value = response.data.page
+    movies.value = response.data.results
+  } catch (error) {
+    console.error('Erro ao obter filmes:', error);
+  } finally {
+    isLoading.value = false;
+  }
 };
 </script>
+
 
 <template>
   <h1>CartoonFlix</h1>
@@ -69,6 +88,7 @@ const listMovies = async (genreId) => {
       {{ genre.name }}
     </li>
   </ul>
+  <loading v-model:active="isLoading" is-full-page />
   <div class="movie-list">
     <div v-for="movie in movies" :key="movie.id" class="movie-card">
       <router-link :to="`/movie/${movie.id}`">
@@ -88,11 +108,23 @@ const listMovies = async (genreId) => {
         <button class="contadorPagina2" @click="proxima">Proxima</button>
       </div>
 
-      <button @click="$router.push({ name: 'Home' })">Voltar</button>
+      <button class="back" @click="$router.push({ name: 'Home' })">Voltar</button>
 
 </template>
 
 <style scoped>
+.back{
+  background-color: #ff5100;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  color: white;
+}
+
+.back:hover{
+  cursor: pointer;
+  background-color: rgba(202, 0, 0, 0.768);
+  box-shadow: 0 0 0.5rem rgba(230, 118, 74, 0.768);
+}
 .partcontadores {
   margin-top: 3%;
   padding-bottom: 2%;

@@ -17,7 +17,7 @@ import Header from '@/components/Header.vue';
 header {
   height: 3rem;
   display: flex;
-  background-color: rgb(243, 126, 72);
+  background-color: #ff5100;
   color: #fff;
   font-size: 1.2rem;
   padding-left: 2rem;
